@@ -1,0 +1,87 @@
+{
+  "dashboard": {
+    "title": "MCP Gateway",
+    "uid": "mcp-gateway-overview",
+    "timezone": "browser",
+    "refresh": "10s",
+    "panels": [
+      {
+        "title": "Request Rate (req/s)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(mcp_gateway_requests_total[5m])",
+            "legendFormat": "{{method}} {{path}} {{status}}"
+          }
+        ]
+      },
+      {
+        "title": "Request Latency (p95)",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(mcp_gateway_request_duration_seconds_bucket[5m]))",
+            "legendFormat": "p95 {{upstream}}"
+          }
+        ]
+      },
+      {
+        "title": "Error Rate",
+        "type": "stat",
+        "gridPos": {"h": 4, "w": 6, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "sum(rate(mcp_gateway_requests_total{status=~\"5..\"}[5m])) / sum(rate(mcp_gateway_requests_total[5m])) * 100",
+            "legendFormat": "Error %"
+          }
+        ]
+      },
+      {
+        "title": "Active Agent Sessions",
+        "type": "stat",
+        "gridPos": {"h": 4, "w": 6, "x": 6, "y": 8},
+        "targets": [
+          {
+            "expr": "mcp_gateway_active_agent_sessions",
+            "legendFormat": "Sessions"
+          }
+        ]
+      },
+      {
+        "title": "Circuit Breaker State",
+        "type": "table",
+        "gridPos": {"h": 4, "w": 12, "x": 12, "y": 8},
+        "targets": [
+          {
+            "expr": "mcp_gateway_circuit_breaker_state",
+            "legendFormat": "{{upstream}}"
+          }
+        ]
+      },
+      {
+        "title": "Rate Limit Rejections",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+        "targets": [
+          {
+            "expr": "rate(mcp_gateway_rate_limit_rejections_total[5m])",
+            "legendFormat": "{{identity}} ({{tier}})"
+          }
+        ]
+      },
+      {
+        "title": "Upstream Errors",
+        "type": "timeseries",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 12},
+        "targets": [
+          {
+            "expr": "rate(mcp_gateway_upstream_errors_total[5m])",
+            "legendFormat": "{{upstream}} — {{error_type}}"
+          }
+        ]
+      }
+    ]
+  }
+}

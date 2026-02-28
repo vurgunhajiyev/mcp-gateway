@@ -1,0 +1,58 @@
+[
+  {
+    "name": "notion",
+    "url": "https://mcp.notion.com/mcp",
+    "description": "Notion MCP server — workspace management",
+    "version": "v1",
+    "timeout_seconds": 30.0,
+    "connect_timeout": 5.0,
+    "upstream_token": "",
+    "tags": ["productivity", "documents"],
+    "health_check_path": "/health",
+    "max_retries": 3,
+    "circuit_breaker_threshold": 5,
+    "circuit_breaker_timeout": 60.0
+  },
+  {
+    "name": "github",
+    "url": "https://api.github.com",
+    "description": "GitHub API — repository and issue management",
+    "version": "v1",
+    "timeout_seconds": 15.0,
+    "connect_timeout": 3.0,
+    "upstream_token": "",
+    "tags": ["development", "scm"],
+    "health_check_path": "/status",
+    "max_retries": 2,
+    "circuit_breaker_threshold": 3,
+    "circuit_breaker_timeout": 30.0
+  },
+  {
+    "name": "internal-api",
+    "url": "http://localhost:9000",
+    "description": "Internal microservice API",
+    "version": "v1",
+    "timeout_seconds": 10.0,
+    "connect_timeout": 2.0,
+    "upstream_token": "",
+    "tags": ["internal"],
+    "health_check_path": "/health",
+    "max_retries": 3,
+    "circuit_breaker_threshold": 5,
+    "circuit_breaker_timeout": 60.0
+  },
+  {
+    "name": "gemini",
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=YOUR_KEY",
+    "description": "Google Gemini API",
+    "version": "v1beta",
+    "timeout_seconds": 30.0,
+    "connect_timeout": 5.0,
+    "upstream_token": "",
+    "tags": ["ai", "llm"],
+    "health_check_path": "",
+    "max_retries": 2,
+    "circuit_breaker_threshold": 3,
+    "circuit_breaker_timeout": 30.0
+  }
+]

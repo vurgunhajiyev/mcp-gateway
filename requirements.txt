@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+httpx[http2]
+prometheus-client
+PyJWT
+pydantic
+pydantic-settings
+structlog
+tenacity
+cachetools
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-exporter-otlp
+opentelemetry-instrumentation-fastapi
+opentelemetry-instrumentation-logging
+opentelemetry-instrumentation-requests
+opentelemetry-instrumentation-httpx

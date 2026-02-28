@@ -1,0 +1,29 @@
+[
+  {
+    "key": "dev-key-alice-001",
+    "owner": "alice",
+    "description": "Development key for Alice",
+    "allowed_upstreams": [],
+    "rate_limit_rpm": -1,
+    "scopes": ["read", "write"],
+    "tier": "standard"
+  },
+  {
+    "key": "dev-key-bob-002",
+    "owner": "bob",
+    "description": "Development key for Bob — limited to notion upstream",
+    "allowed_upstreams": ["notion"],
+    "rate_limit_rpm": 30,
+    "scopes": ["read"],
+    "tier": "standard"
+  },
+  {
+    "key": "dev-key",
+    "owner": "vurgun",
+    "description": "Gemini access key",
+    "allowed_upstreams": ["gemini"],
+    "rate_limit_rpm": 1000,
+    "scopes": ["read", "write"],
+    "tier": "premium"
+  }
+]
