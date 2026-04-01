@@ -16,3 +16,7 @@ coverage.xml
 .coverage
 logs/
 *.log
+
+# Node
+node_modules/
+
